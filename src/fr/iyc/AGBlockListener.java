@@ -16,9 +16,9 @@ public AntiGriefWorldPvp plugin;
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event)
 	{
-		 String block = String.valueOf(event.getBlock().getTypeId());
+		 String block = event.getBlock().getTypeId() + "";
 	     Player player = event.getPlayer();
-	     String world = event.getPlayer().getWorld().getName().toString();
+	     String world = event.getPlayer().getWorld().getName();
 	     
 	     // Le joueur est dans le monde concerné
 	     if (world.equalsIgnoreCase(Config.getWorld()))
