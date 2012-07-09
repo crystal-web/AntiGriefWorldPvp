@@ -25,6 +25,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 	  public void onEnable() {
 	   
 		  //As tu reçu mon trool ?
+		  //test
 		  
 	    getServer().getPluginManager().registerEvents(this, this);
 	    
