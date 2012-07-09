@@ -63,10 +63,10 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 		getLogger().info("event load");
 		String block = String.valueOf(event.getBlock().getTypeId());
 		
-		event.setCancelled(true);
+		
 	     Player player = event.getPlayer();
 	     
-	     String world = event.getPlayer().getWorld().toString();
+	     String world = event.getPlayer().getWorld().getName().toString();
 	     
 	     // Le joueur est dans le monde concerné
 	     if (world.equalsIgnoreCase(Config.getWorld()))
@@ -98,7 +98,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
     		 	getLogger().info(Config.getItemBreakable().toString());
     		 	
 	 			player.sendMessage(Config.getMessageUnbreakble());
-    		 	event.isCancelled();
+	 			event.setCancelled(true);
 	    	 }
 	    	 else
 	    	 {
