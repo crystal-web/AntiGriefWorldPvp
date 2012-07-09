@@ -44,8 +44,6 @@ public AntiGriefWorldPvp plugin;
     		 			plugin.getLogger().info("Bloque desctructible");
     		 			return;
     		 		}
-    		 		
-    		 		plugin.getLogger().info(item[i] + " != " + block);
     		 	}
     		 	
     		 	plugin.getLogger().info("Bloque indesctructible " + event.getBlock().getTypeId());
