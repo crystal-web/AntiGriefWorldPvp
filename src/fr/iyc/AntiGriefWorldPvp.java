@@ -60,7 +60,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onBlockBreak (BlockBreakEvent event)
 	{
-		getLogger().info("event load");
+
 		String block = String.valueOf(event.getBlock().getTypeId());
 
 	     Player player = event.getPlayer();
@@ -99,11 +99,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 	 			player.sendMessage(Config.getMessageUnbreakble());
     		 	event.isCancelled();
 	    	 }
-	    	 else
-	    	 {
-	    		 
-	    		 getLogger().info("has op");
-	    	 }
+
 	     //
 	    //String m = "Block id:." + b;
 	   //  getLogger().info(conf.getItemBreakable().toString());
