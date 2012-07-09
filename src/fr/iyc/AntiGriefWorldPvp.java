@@ -24,7 +24,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 
 	  public void onEnable() {
 	   
-		  //As tu reçu mon trool ?
+		  //As tu reï¿½u mon trool ?
 		  //test
 		  
 	    getServer().getPluginManager().registerEvents(this, this);
@@ -103,7 +103,6 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
     		 	event.isCancelled();
 	    	 }
 
-	     //
 	    //String m = "Block id:." + b;
 	   //  getLogger().info(conf.getItemBreakable().toString());
 	  //   e.getBlock().setType(Material.AIR);
