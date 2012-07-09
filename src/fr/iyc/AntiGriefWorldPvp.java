@@ -66,7 +66,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 		event.setCancelled(true);
 	     Player player = event.getPlayer();
 	     
-	     String world = event.getPlayer().getWorld().toString();
+	     String world = event.getPlayer().getWorld().getName();
 	     
 	     // Le joueur est dans le monde concerné
 	     if (world.equalsIgnoreCase(Config.getWorld()))
