@@ -19,7 +19,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 	  
 	  public void onDisable()
 	  {
-		  getLogger().info("Désactivation de AntiGriefWorldPvp");
+		  getLogger().info("Désactivation de AntiGriefWorldPvp 1.1");
 	  }
 
 	  public void onEnable() {
@@ -60,7 +60,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onBlockBreak (BlockBreakEvent event)
 	{
-
+		getLogger().info("event load");
 		String block = String.valueOf(event.getBlock().getTypeId());
 		
 		event.setCancelled(true);
@@ -71,6 +71,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 	     // Le joueur est dans le monde concerné
 	     if (world.equalsIgnoreCase(Config.getWorld()))
 	     {
+	    	 getLogger().info("World is " + Config.getWorld());
 	    	 // Se n'est pas l'operateur
 	    	 if (!event.getPlayer().isOp())
 	    	 {
@@ -85,19 +86,33 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
     		 	//for (int i = 0; i<item.length; i++)
     		 	for(String str : item)
     			{
-    		 		if ( str.trim() != block )
+    		 		getLogger().info(Config.getItemBreakable().toString());
+    		 		if ( str.trim() == block )
     		 		{
-    		 			player.sendMessage(Config.getMessageUnbreakble());
-    	    		 	event.isCancelled();
+    		 			getLogger().info("return");
+    		 			return;
     		 		}
     		 	}
     		 	
-    		 
+    		 	getLogger().info("no item in stack");
+    		 	getLogger().info(Config.getItemBreakable().toString());
+    		 	
+	 			player.sendMessage(Config.getMessageUnbreakble());
+    		 	event.isCancelled();
+	    	 }
+	    	 else
+	    	 {
+	    		 
+	    		 getLogger().info("has op");
 	    	 }
 	     //
-	     //String m = "Block id:." + b;
+	    //String m = "Block id:." + b;
 	   //  getLogger().info(conf.getItemBreakable().toString());
 	  //   e.getBlock().setType(Material.AIR);
+	     }
+	     else
+	     {
+	    	 getLogger().info("A no World is " + Config.getWorld());
 	     }
 	}
 	
