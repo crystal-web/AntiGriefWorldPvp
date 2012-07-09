@@ -91,12 +91,11 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
     		 		getLogger().info(Config.getItemBreakable().toString());
     		 		if (str.trim() == block )
     		 		{
-    		 			getLogger().info("return");
+    		 			getLogger().info("Bloque desctructible");
     		 			return;
     		 		}
     		 	}
     		 	
-    		 	getLogger().info("no item in stack");
     		 	getLogger().info(Config.getItemBreakable().toString());
     		 	
 	 			player.sendMessage(Config.getMessageUnbreakble());
