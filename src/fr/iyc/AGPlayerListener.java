@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 public class AGPlayerListener implements Listener{
 	
@@ -15,7 +16,7 @@ public class AGPlayerListener implements Listener{
 	}
 	
 	@EventHandler
-	public void joinEvent(Player event)
+	public void joinEvent(PlayerJoinEvent event)
 	{
 		event.getPlayer().getInventory().clear();
 	}
