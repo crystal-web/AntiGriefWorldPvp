@@ -14,6 +14,7 @@ public class Config
   
   public void load(AntiGriefWorldPvp plugin)
   {
+	  //TROOOOOOOLL
     FileConfiguration config = plugin.getConfig();
 
     if (config.get("config") == null)
