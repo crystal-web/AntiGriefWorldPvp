@@ -16,6 +16,7 @@ public class Config
   {
 	  //TROOOOOOOLL
 	  //Un autre
+	  //Encore un autre TROOOOOOOOOOOOL
     FileConfiguration config = plugin.getConfig();
 
     if (config.get("config") == null)

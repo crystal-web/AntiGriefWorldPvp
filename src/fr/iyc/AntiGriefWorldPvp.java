@@ -16,22 +16,27 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 
 	 private boolean kickall = false;
 	 private Config conf;
-	  
+	 public AGPlayerListener playerListener = new AGPlayerListener(this);
+	 public AGBlockListener blockListener = new AGBlockListener(this);
+
 	  public void onDisable()
 	  {
 		  getLogger().info("Désactivation de AntiGriefWorldPvp 1.1");
 	  }
 
 	  public void onEnable() {
-	   
-	    getServer().getPluginManager().registerEvents(this, this);
-	    
+
+		  //As tu re�u mon trool ?
+		  //test
+
+	    getServer().getPluginManager().registerEvents(blockListener, this);
+	    getServer().getPluginManager().registerEvents(playerListener, this);
 	    getLogger().info("Activation de AntiGriefWorldPvp");
 	    this.conf = new Config();
 	    this.conf.load(this);
 	    getLogger().info("Chargement de la configuration");	    
-	    
-	    
+
+
 	    /*
 	    this.conf = new Config();
 	    this.conf.load(this);
@@ -54,72 +59,6 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 		    	this.kickall = true;
 		    }
 	 	*/
-	    
-	  }
-	
-	@EventHandler(priority = EventPriority.NORMAL)
-	public void onBlockBreak (BlockBreakEvent event)
-	{
-		getLogger().info("event load");
-		String block = String.valueOf(event.getBlock().getTypeId());
-		
-		
-	     Player player = event.getPlayer();
-	     
-	     String world = event.getPlayer().getWorld().getName().toString();
-	     
-	     // Le joueur est dans le monde concerné
-	     if (world.equalsIgnoreCase(Config.getWorld()))
-	     {
-	    	 getLogger().info("World is " + Config.getWorld());
-	    	 // Se n'est pas l'operateur
-	    	 if (!event.getPlayer().isOp())
-	    	 {
-	    		 if (event.getPlayer().getGameMode() == org.bukkit.GameMode.CREATIVE)
-	    		 {
-	    			 player.sendMessage("[AntigriefWorldPvp] Je force le mode survival");
-	    			 event.getPlayer().setGameMode(org.bukkit.GameMode.SURVIVAL);
-	    		 }
-	    		 
-	    		 String item[] = Config.getItemBreakable();
-	    		 
-    		 	//for (int i = 0; i<item.length; i++)
-    		 	for(String str : item)
-    			{
-    		 		getLogger().info(Config.getItemBreakable().toString());
-    		 		if ( str.trim() == block )
-    		 		{
-    		 			getLogger().info("return");
-    		 			return;
-    		 		}
-    		 	}
-    		 	
-    		 	getLogger().info("no item in stack");
-    		 	getLogger().info(Config.getItemBreakable().toString());
-    		 	
-	 			player.sendMessage(Config.getMessageUnbreakble());
-	 			event.setCancelled(true);
-	    	 }
-	    	 else
-	    	 {
-	    		 
-	    		 getLogger().info("has op");
-	    	 }
-	     //
-	    //String m = "Block id:." + b;
-	   //  getLogger().info(conf.getItemBreakable().toString());
-	  //   e.getBlock().setType(Material.AIR);
-	     }
-	     else
-	     {
-	    	 getLogger().info("A no World is " + Config.getWorld());
-	     }
-	}
-	
-	public void PlayerJoinEvent(Player playerJoined)
-	{
-		playerJoined.getPlayer().getInventory().clear();
-	}
-	
-	
+
+	  }	
 }
