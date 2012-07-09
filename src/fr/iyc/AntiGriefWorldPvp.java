@@ -62,8 +62,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 	{
 		getLogger().info("event load");
 		String block = String.valueOf(event.getBlock().getTypeId());
-		
-		event.setCancelled(true);
+
 	     Player player = event.getPlayer();
 	     
 	     String world = event.getPlayer().getWorld().getName();
@@ -87,7 +86,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
     		 	for(String str : item)
     			{
     		 		getLogger().info(Config.getItemBreakable().toString());
-    		 		if ( str.trim() == block )
+    		 		if (str.trim() == block )
     		 		{
     		 			getLogger().info("return");
     		 			return;
