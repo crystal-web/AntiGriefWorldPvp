@@ -23,6 +23,6 @@ public class AGPlayerListener implements Listener{
 		if(config.getCleanInventoryOnJoin(event.getPlayer().getWorld().getName())){
 			event.getPlayer().getInventory().setArmorContents(null);
 			event.getPlayer().getInventory().clear();
-		} 
+		}
 	}
 }
