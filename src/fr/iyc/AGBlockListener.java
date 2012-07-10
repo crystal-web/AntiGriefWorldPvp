@@ -18,10 +18,10 @@ public class AGBlockListener implements Listener{
 	{
 		String block = String.valueOf(event.getBlock().getTypeId());
 		Player player = event.getPlayer();
-		String world = event.getPlayer().getWorld().getName().toString();
+		String world = event.getPlayer().getWorld().getName();
 
 		// Le joueur est dans le monde concerné
-		if (world.equalsIgnoreCase(Config.getWorld()))
+		if (world.equalsIgnoreCase(Config.getWorld(player.getName())))
 		{
 
 			// Se n'est pas l'operateur
@@ -33,7 +33,7 @@ public class AGBlockListener implements Listener{
 					event.getPlayer().setGameMode(org.bukkit.GameMode.SURVIVAL);
 				}
 
-				String item[] = Config.getItemBreakable();
+				String item[] = Config.getItemBreakable(world);
 
 				for (int i = 0; i<item.length; i++)
 					//for(String str : item)
@@ -49,7 +49,7 @@ public class AGBlockListener implements Listener{
 				plugin.getLogger().info("Bloque indesctructible " + event.getBlock().getTypeId());
 
 
-				player.sendMessage(Config.getMessageUnbreakble());
+				player.sendMessage(Config.getMessageUnbreakble(world));
 				event.setCancelled(true);
 			}
 

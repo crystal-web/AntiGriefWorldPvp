@@ -20,5 +20,4 @@ public class AGPlayerListener implements Listener{
 	{
 		event.getPlayer().getInventory().clear();
 	}
-
 }

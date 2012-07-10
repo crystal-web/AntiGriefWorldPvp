@@ -6,47 +6,43 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 public class Config
 {
-	private static String itemBreakable;
+	public static AntiGriefWorldPvp plugin;
+	/*private static String itemBreakable;
 	private static String messageUnbreakble;
 	private static String world;
-	private String cleanInventoryInJoin;
+	private String cleanInventoryInJoin;*/
 
 
 	public void load(AntiGriefWorldPvp plugin)
 	{
+		this.plugin = plugin;
 		FileConfiguration config = plugin.getConfig();
 
 		if (config.get("config") == null)
 		{
-			String defaultItem = "4,12,13,17,18,20,31,32,35";
-			config.set("config.itemBreakable", defaultItem);
-
-			String defaultMessageUnbreakble = "Mmmh sa me semble du dur à casser";
-			config.set("config.messageUnbreakble", defaultMessageUnbreakble);
-
 			String defaultWord = "world";
 			config.set("config.world", defaultWord);
+			
+			String defaultItem = "4,12,13,17,18,20,31,32,35";
+			config.set("config.world.itemBreakable", defaultItem);
+
+			String defaultMessageUnbreakble = "Mmmh sa me semble dur à casser";
+			config.set("config.world.messageUnbreakble", defaultMessageUnbreakble);
 
 			String cleanInventory = "true";
-			config.set("config.cleanInventoryInJoin", cleanInventory);
+			config.set("config.world.cleanInventoryInJoin", cleanInventory);
 
-			this.setItemBreakable(defaultItem);
-			this.setMessageUnbreakble(defaultMessageUnbreakble);
+			/*this.setItemBreakable(defaultItem);
+			this.setMessageUnbreakble(defaultMessageUnbreakble);*/
 
 			plugin.saveConfig();
 		}
-
-
-		this.itemBreakable = config.getString("config.itemBreakable");
-		this.messageUnbreakble = config.getString("config.messageUnbreakble");
-		this.world = config.getString("config.world");
-		this.cleanInventoryInJoin = config.getString("config.cleanInventoryInJoin");
 	}
 
 
-	public boolean getCleanInventoryOnJoin()
+	public boolean getCleanInventoryOnJoin(String world)
 	{
-		if (cleanInventoryInJoin.equalsIgnoreCase("true") )
+		if (plugin.getConfig().getString("config."+world+".itemBreakable").equalsIgnoreCase("true"))
 		{
 			return true;
 		}
@@ -54,31 +50,29 @@ public class Config
 		return false;
 	}
 
-	public static String getWorld()
+	public static String getWorld(String player)
 	{
-		return world;
+		return plugin.getServer().getPlayer(player).getWorld().getName();
 	}
 
-	public static String[] getItemBreakable() {
-		String[] str=itemBreakable.split(",");
+	public static String[] getItemBreakable(String world) {
+		String[] str= plugin.getConfig().getString("config."+world+".itemBreakable").split(",");
 		return str;
 	}
 
 
 
-	public void setItemBreakable(String itemBreakable) {
+	/*public void setItemBreakable(String itemBreakable, String world) {
 		this.itemBreakable = itemBreakable;
+	}*/
+
+
+
+	public static String getMessageUnbreakble(String world) {
+		return plugin.getConfig().getString("config."+world+".messageUnbreakble");
 	}
 
-
-
-	public static String getMessageUnbreakble() {
-		return messageUnbreakble;
-	}
-
-
-
-	public void setMessageUnbreakble(String messageUnbreakble) {
+	/*public void setMessageUnbreakble(String messageUnbreakble, String world) {
 		this.messageUnbreakble = messageUnbreakble;
-	}
+	}*/
 }
