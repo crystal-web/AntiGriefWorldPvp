@@ -21,6 +21,7 @@ public class Config
 			String defaultWord = "world";
 			config.set("config.world", defaultWord);
 			
+			config.set("config.world.restrictedBlocks", "true");
 			String defaultItem = "4,12,13,17,18,20,31,32,35";
 			config.set("config.world.itemBreakable", defaultItem);
 
@@ -53,6 +54,16 @@ public class Config
 
 		return false;
 	}
+	
+	public static boolean getRestrictionBlock(String world)
+	{
+		if (plugin.getConfig().getString("config."+world+".restrictedBlocks").equalsIgnoreCase("true"))
+		{
+			return true;
+		}
+
+		return false;
+	}
 
 	public static String getWorld(String player)
 	{
@@ -61,7 +72,7 @@ public class Config
 
 	public static String[] getItemBreakable(String world) {
 		String[] str= plugin.getConfig().getString("config."+world+".itemBreakable").split(",");
-		return str;
+			return str;
 	}
 
 

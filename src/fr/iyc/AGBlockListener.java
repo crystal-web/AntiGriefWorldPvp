@@ -21,8 +21,8 @@ public class AGBlockListener implements Listener{
 		Player player = event.getPlayer();
 		String world = event.getPlayer().getWorld().getName();
 
-		if(Config.worldIsConfig(player)){
-			// Le joueur est dans le monde concernÃ©
+		if(Config.worldIsConfig(player) && Config.getRestrictionBlock(world)){
+			// Le joueur est dans le monde concerné
 			if (world.equalsIgnoreCase(Config.getWorld(player.getName())))
 			{
 

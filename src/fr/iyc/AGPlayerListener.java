@@ -20,7 +20,7 @@ public class AGPlayerListener implements Listener{
 	@EventHandler
 	public void joinEvent(PlayerJoinEvent event)
 	{
-		if(config.getCleanInventoryOnJoin(event.getPlayer().getWorld().getName())){
+		if(config.getCleanInventoryOnJoin(event.getPlayer().getWorld().getName()) && config.worldIsConfig(event.getPlayer())){
 			event.getPlayer().getInventory().setArmorContents(null);
 			event.getPlayer().getInventory().clear();
 		}
