@@ -24,7 +24,7 @@ public class Config
     	String defaultItem = "4,12,13,17,18,20,31,32,35";
 		config.set("config.itemBreakable", defaultItem);
 		
-		String defaultMessageUnbreakble = "Mmmh ça me semble du dur à cassé";
+		String defaultMessageUnbreakble = "Mmmh sa me semble du dur � casser";
 		config.set("config.messageUnbreakble", defaultMessageUnbreakble);
 		
 		String defaultWord = "world";
