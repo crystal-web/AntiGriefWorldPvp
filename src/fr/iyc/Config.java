@@ -3,6 +3,7 @@ package fr.iyc;
 import java.util.Random;
 
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 
 public class Config
 {
@@ -16,6 +17,7 @@ public class Config
 
 		if (config.get("config") == null)
 		{
+			config.set("config.worlds", "world");
 			String defaultWord = "world";
 			config.set("config.world", defaultWord);
 			
@@ -31,11 +33,20 @@ public class Config
 			plugin.saveConfig();
 		}
 	}
-
+	
+	public static boolean worldIsConfig(Player player){
+		String[] worlds = plugin.getConfig().getString("config.worlds").split(",");
+		for(int i = 0; i <worlds.length; i++){
+			if(player.getWorld().getName().equalsIgnoreCase(worlds[i].trim())){
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public boolean getCleanInventoryOnJoin(String world)
 	{
-		if (plugin.getConfig().getString("config."+world+".itemBreakable").equalsIgnoreCase("true"))
+		if (plugin.getConfig().getString("config."+world+".cleanInventoryInJoin").equalsIgnoreCase("true"))
 		{
 			return true;
 		}

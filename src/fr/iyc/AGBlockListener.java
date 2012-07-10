@@ -21,36 +21,37 @@ public class AGBlockListener implements Listener{
 		Player player = event.getPlayer();
 		String world = event.getPlayer().getWorld().getName();
 
-		// Le joueur est dans le monde concerné
-		if (world.equalsIgnoreCase(Config.getWorld(player.getName())))
-		{
-
-			// Se n'est pas l'operateur
-			if (!event.getPlayer().isOp())
+		if(Config.worldIsConfig(player)){
+			// Le joueur est dans le monde concerné
+			if (world.equalsIgnoreCase(Config.getWorld(player.getName())))
 			{
-				if (player.getGameMode() == GameMode.CREATIVE)
+
+				// Se n'est pas l'operateur
+				if (!event.getPlayer().isOp())
 				{
-					player.sendMessage("[AntigriefWorldPvp] Je force le mode survival");
-					event.getPlayer().setGameMode(GameMode.SURVIVAL);
-				}
-
-				String item[] = Config.getItemBreakable(world);
-
-				for (int i = 0; i<item.length; i++)
-				{
-
-					if (item[i].trim().equalsIgnoreCase(block) )
+					if (player.getGameMode() == GameMode.CREATIVE)
 					{
-						plugin.getLogger().info("Bloque desctructible");
-						return;
+						player.sendMessage("[AntigriefWorldPvp] Je force le mode survival");
+						event.getPlayer().setGameMode(GameMode.SURVIVAL);
 					}
+
+					String item[] = Config.getItemBreakable(world);
+
+					for (int i = 0; i<item.length; i++)
+					{
+						if (item[i].trim().equalsIgnoreCase(block) )
+						{
+							plugin.getLogger().info("Bloque desctructible");
+							return;
+						}
+					}
+
+					plugin.getLogger().info("Bloque indesctructible " + event.getBlock().getTypeId());
+
+
+					player.sendMessage(Config.getMessageUnbreakble(world));
+					event.setCancelled(true);
 				}
-
-				plugin.getLogger().info("Bloque indesctructible " + event.getBlock().getTypeId());
-
-
-				player.sendMessage(Config.getMessageUnbreakble(world));
-				event.setCancelled(true);
 			}
 		}
 	}
