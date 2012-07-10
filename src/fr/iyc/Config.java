@@ -7,10 +7,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 public class Config
 {
 	public static AntiGriefWorldPvp plugin;
-	/*private static String itemBreakable;
-	private static String messageUnbreakble;
-	private static String world;
-	private String cleanInventoryInJoin;*/
 
 
 	public void load(AntiGriefWorldPvp plugin)
@@ -31,9 +27,6 @@ public class Config
 
 			String cleanInventory = "true";
 			config.set("config.world.cleanInventoryInJoin", cleanInventory);
-
-			/*this.setItemBreakable(defaultItem);
-			this.setMessageUnbreakble(defaultMessageUnbreakble);*/
 
 			plugin.saveConfig();
 		}
@@ -65,8 +58,6 @@ public class Config
 	/*public void setItemBreakable(String itemBreakable, String world) {
 		this.itemBreakable = itemBreakable;
 	}*/
-
-
 
 	public static String getMessageUnbreakble(String world) {
 		return plugin.getConfig().getString("config."+world+".messageUnbreakble");

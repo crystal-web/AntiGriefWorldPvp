@@ -1,5 +1,6 @@
 package fr.iyc;
 
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,16 +28,15 @@ public class AGBlockListener implements Listener{
 			// Se n'est pas l'operateur
 			if (!event.getPlayer().isOp())
 			{
-				if (event.getPlayer().getGameMode() == org.bukkit.GameMode.CREATIVE)
+				if (player.getGameMode() == GameMode.CREATIVE)
 				{
 					player.sendMessage("[AntigriefWorldPvp] Je force le mode survival");
-					event.getPlayer().setGameMode(org.bukkit.GameMode.SURVIVAL);
+					event.getPlayer().setGameMode(GameMode.SURVIVAL);
 				}
 
 				String item[] = Config.getItemBreakable(world);
 
 				for (int i = 0; i<item.length; i++)
-					//for(String str : item)
 				{
 
 					if (item[i].trim().equalsIgnoreCase(block) )
@@ -52,10 +52,6 @@ public class AGBlockListener implements Listener{
 				player.sendMessage(Config.getMessageUnbreakble(world));
 				event.setCancelled(true);
 			}
-
-			//String m = "Block id:." + b;
-			//  plugin.getLogger().info(conf.getItemBreakable().toString());
-			//   e.getBlock().setType(Material.AIR);
 		}
 	}
 
