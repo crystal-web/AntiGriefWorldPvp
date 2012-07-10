@@ -8,13 +8,13 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class AGPlayerListener implements Listener{
-	
+
 	public AntiGriefWorldPvp plugin;
-	
+
 	public AGPlayerListener(AntiGriefWorldPvp pl){
 		plugin = pl;
 	}
-	
+
 	@EventHandler
 	public void joinEvent(PlayerJoinEvent event)
 	{
