@@ -39,6 +39,7 @@ public class AGPlayerListener implements Listener{
 	public void gameModeChange(PlayerGameModeChangeEvent event){
 		Player player = event.getPlayer();
 		if(!player.isOp() && player.getGameMode() == GameMode.SURVIVAL){
+			player.sendMessage("[AntigriefWorldPvp] Je force le mode survival");
 			event.setCancelled(true);
 		}
 	}

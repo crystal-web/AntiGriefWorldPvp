@@ -1,3 +1,6 @@
 name: AntiGriefWorldPvp
 main: fr.iyc.AntiGriefWorldPvp
 version: 1
+commands:
+    agpvp:
+        description: Commande de l'antigrief world PVP
