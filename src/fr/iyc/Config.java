@@ -1,38 +1,44 @@
 package fr.iyc;
 
-import java.util.Random;
+import java.util.List;
 
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 public class Config
 {
 	public static AntiGriefWorldPvp plugin;
-
+	public static FileConfiguration config;
 
 	public void load(AntiGriefWorldPvp plugin)
 	{
 		this.plugin = plugin;
-		FileConfiguration config = plugin.getConfig();
-
+		config = plugin.getConfig();
+		List<World> str = plugin.getServer().getWorlds();
 		if (config.get("config") == null)
 		{
 			config.set("config.worlds", "world");
-			String defaultWord = "world";
-			config.set("config.world", defaultWord);
-			
-			config.set("config.world.restrictedBlocks", "true");
-			String defaultItem = "4,12,13,17,18,20,31,32,35";
-			config.set("config.world.itemBreakable", defaultItem);
-
-			String defaultMessageUnbreakble = "Mmmh sa me semble dur à casser";
-			config.set("config.world.messageUnbreakble", defaultMessageUnbreakble);
-
-			String cleanInventory = "true";
-			config.set("config.world.cleanInventoryInJoin", cleanInventory);
-
+			addWorldOnConfig("world");
+			for(int i = 0; i<str.size(); i++){
+				if(config.get("config."+ str.get(i).getName()) == null){
+					String world = str.get(i).getName();
+					addWorldOnConfig(world);
+				}
+			}
 			plugin.saveConfig();
 		}
+	}
+	
+	public void addWorldOnConfig(String world){
+		config.set("config."+world+".restrictedBlocks", "true");
+
+		config.set("config."+world+".itemBreakable", "4,12,13,17,18,20,31,32,35");
+
+		config.set("config."+world+".messageUnbreakble", "Mmmh sa me semble dur à casser");
+
+		String cleanInventory = "true";
+		config.set("config."+world+".cleanInventoryInJoin", "true");
 	}
 	
 	public static boolean worldIsConfig(Player player){
@@ -75,17 +81,7 @@ public class Config
 			return str;
 	}
 
-
-
-	/*public void setItemBreakable(String itemBreakable, String world) {
-		this.itemBreakable = itemBreakable;
-	}*/
-
 	public static String getMessageUnbreakble(String world) {
 		return plugin.getConfig().getString("config."+world+".messageUnbreakble");
 	}
-
-	/*public void setMessageUnbreakble(String messageUnbreakble, String world) {
-		this.messageUnbreakble = messageUnbreakble;
-	}*/
 }

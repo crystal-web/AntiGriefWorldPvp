@@ -1,12 +1,12 @@
 package fr.iyc;
 
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.event.player.PlayerMoveEvent;
 
 public class AGPlayerListener implements Listener{
 
@@ -23,6 +23,23 @@ public class AGPlayerListener implements Listener{
 		if(config.getCleanInventoryOnJoin(event.getPlayer().getWorld().getName()) && config.worldIsConfig(event.getPlayer())){
 			event.getPlayer().getInventory().setArmorContents(null);
 			event.getPlayer().getInventory().clear();
+		}
+	}
+	
+	@EventHandler
+	public void moveEvent(PlayerMoveEvent event){
+		Player player = event.getPlayer();
+		if(player.getGameMode() == GameMode.CREATIVE && !player.isOp()){
+			player.sendMessage("[AntigriefWorldPvp] Je force le mode survival");
+			player.setGameMode(GameMode.SURVIVAL);
+		}
+	}
+	
+	@EventHandler
+	public void gameModeChange(PlayerGameModeChangeEvent event){
+		Player player = event.getPlayer();
+		if(!player.isOp() && player.getGameMode() == GameMode.SURVIVAL){
+			event.setCancelled(true);
 		}
 	}
 }
