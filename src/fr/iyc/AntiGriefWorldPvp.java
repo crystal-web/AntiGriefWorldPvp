@@ -40,7 +40,10 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 			return false;
 		}
 		Player player = (Player)sender;
-		
+		if(!player.isOp()){
+			player.sendMessage(ChatColor.RED + "Vous n'avez pasla permission d'utiliser cette commande !");
+			return false;
+		}
 		if(label.equalsIgnoreCase("agpvp") && args.length > 0){
 			if(args[0].equalsIgnoreCase("add")){
 				for(int i =2;i<args.length;i++){
@@ -72,10 +75,10 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 			}
 			if(args[0].equalsIgnoreCase("help")){
 				player.sendMessage(ChatColor.GOLD +" -------------Aide de AntiGriefWorldPVP-------------");
-				player.sendMessage("/agpvp add <world> <blockID>     - Ajoute un block à la blacklist");
-				player.sendMessage("/agpvp remove <world> <blockID>     -Retire un block de la blacklist");
-				player.sendMessage("/agpvp clean <world> <true/false>     -Active ou désactive le cleanInventory");
-				player.sendMessage("/agpvp blacklist <world> <true/false>     -Active ou désactive la blacklist d'un monde");
+				player.sendMessage(ChatColor.ITALIC + "/agpvp add <world> <blockID>     - Ajoute un block à la blacklist");
+				player.sendMessage(ChatColor.ITALIC + "/agpvp remove <world> <blockID>     -Retire un block de la blacklist");
+				player.sendMessage(ChatColor.ITALIC + "/agpvp clean <world> <true/false>     -Active ou désactive le cleanInventory");
+				player.sendMessage(ChatColor.ITALIC + "/agpvp blacklist <world> <true/false>     -Active ou désactive la blacklist d'un monde");
 			}
 		}
 		return true;
