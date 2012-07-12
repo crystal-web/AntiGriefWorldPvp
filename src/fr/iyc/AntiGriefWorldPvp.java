@@ -222,19 +222,15 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 	public void removeItemFromList(String world, String block){
 		String str[] = (getConfig().getString("config."+world+".itemBreakable").split(","));
 		ArrayList<String> array = new ArrayList();
-		System.out.println("début");
 		for(int i = 0; i<str.length;i++){
 			array.add(str[i]);
 		}
-		System.out.println(array.toString());
 		for(int i = 0; i < array.size(); i++){
 			String test = array.get(i);
-			System.out.println(test);
 			if(Double.parseDouble(test.trim()) == Double.parseDouble(block.trim())){
 				array.remove(i);
 			}
 		}
-		System.out.println(array.toString());
 		StringBuilder strb = new StringBuilder();
 		for(int i =0; i <array.size();i++){
 			strb.append(array.get(i) + ",");
@@ -271,17 +267,12 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 		for(int i = 0; i<str.length;i++){
 			array.add(str[i]);
 		}
-		System.out.println(array);
 		for(int i = 0; i < array.size(); i++){
 			String test = array.get(i);
-			System.out.println(test);
-			System.out.println(world);
 			if(test.trim().equalsIgnoreCase(world)){
-				System.out.println("Tentative !");
 				array.remove(i);
 			}
 		}
-		System.out.println(array);
 		StringBuilder strb = new StringBuilder();
 		for(int i =0; i <array.size();i++){
 			strb.append(array.get(i) + ",");
@@ -290,7 +281,6 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 		if(strb.charAt(0) == ','){
 			str1 = str1.replace(str1.charAt(0) + "", "");
 		}
-		System.out.println(str1);
 		getConfig().set("config.worlds", str1);
 		this.saveConfig();
 		this.reloadConfig();
