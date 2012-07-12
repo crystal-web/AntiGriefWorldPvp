@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-
 public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 {
 	private Config conf;
@@ -40,7 +39,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 			return false;
 		}
 		Player player = (Player)sender;
-		if(!player.isOp()){
+		if(player.isOp()){
 			player.sendMessage(ChatColor.RED + "Vous n'avez pas la permission d'utiliser cette commande !");
 			return false;
 		}

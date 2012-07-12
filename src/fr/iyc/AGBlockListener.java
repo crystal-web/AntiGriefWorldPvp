@@ -41,13 +41,9 @@ public class AGBlockListener implements Listener{
 					{
 						if (item[i].trim().equalsIgnoreCase(block) )
 						{
-							plugin.getLogger().info("Bloque desctructible");
 							return;
 						}
 					}
-
-					plugin.getLogger().info("Bloque indesctructible " + event.getBlock().getTypeId());
-
 
 					player.sendMessage(Config.getMessageUnbreakble(world));
 					event.setCancelled(true);
