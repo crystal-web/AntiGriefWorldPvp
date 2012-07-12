@@ -30,7 +30,7 @@ public class Config
 		}
 	}
 	
-	public void addWorldOnConfig(String world){
+	public static void addWorldOnConfig(String world){
 		config.set("config."+world+".restrictedBlocks", "true");
 
 		config.set("config."+world+".itemBreakable", "4,12,13,17,18,20,31,32,35");
