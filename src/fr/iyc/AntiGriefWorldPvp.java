@@ -40,7 +40,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 			return false;
 		}
 		Player player = (Player)sender;
-		if(player.isOp()){
+		if(!player.isOp()){
 			player.sendMessage(ChatColor.RED + "Vous n'avez pas la permission d'utiliser cette commande !");
 			return false;
 		}
@@ -191,14 +191,14 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 		player.sendMessage(ChatColor.GOLD +" -------------Aide de AntiGriefWorldPVP-------------");
 		player.sendMessage("/agpvp addblock <world> <blockID>     - Ajoute un block à la blacklist");
 		player.sendMessage("/agpvp delblock <world> <blockID>     -Retire un block de la blacklist");
+		player.sendMessage("/agpvp getblocks <world>     -Affiche les blocks blacklisté d'un monde");
 		player.sendMessage("/agpvp create <world>     -Crée une configuration pour le monde");
 		player.sendMessage("/agpvp addworld <world>     - Active la configuration d'un monde");
 		player.sendMessage("/agpvp delworld <world>     -Désactive la configuration d'un monde");
 		player.sendMessage("/agpvp cleaninv <world> <true/false>     -Active ou désactive le cleanInventory");
 		player.sendMessage("/agpvp blacklist <world> <true/false>     -Active ou désactive la blacklist d'un monde");
-		player.sendMessage("/agpvp getblocks <world>     -Affiche les blocks blacklisté d'un monde");
 		player.sendMessage("/agpvp setmessage <world> <message>     -Change le message lors d'un block blacklisté cassé");
-		player.sendMessage("/agpvp getmessage <world> <message>     -Affiche le message lors d'un block blacklisté cassé");
+		player.sendMessage("/agpvp getmessage <world>     -Affiche le message lors d'un block blacklisté cassé");
 		player.sendMessage("/agpvp reload     -Recharge la configration du plugin");
 	}
 
