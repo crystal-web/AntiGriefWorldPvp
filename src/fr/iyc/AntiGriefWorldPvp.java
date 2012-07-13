@@ -10,12 +10,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
+public class AntiGriefWorldPvp extends JavaPlugin implements Listener
 {
 	private Config conf;
 	public AGPlayerListener playerListener = new AGPlayerListener(this);
 	public AGBlockListener blockListener = new AGBlockListener(this);
-
 	@Override
 	public void onDisable()
 	{
@@ -47,7 +46,6 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 			showHelp(player);
 		}
 		if(label.equalsIgnoreCase("agpvp") && args.length > 0){
-
 			if(args[0].equalsIgnoreCase("addblock")){
 				if(args[2] == null|| args[1] == null){
 					player.sendMessage(ChatColor.RED + "Usage: /agpvp addblock <world> <blockID>");
@@ -180,7 +178,7 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 					player.sendMessage(ChatColor.RED + "Ce monde n'existe pas !");
 					return false;
 				}
-				player.sendMessage("Message du monde "+args[1] + ": "+getConfig().getString("config."+args[1]+".messageUnbreakble"));
+				player.sendMessage("Message du monde "+args[1] + ": "+getConfig().getString("config."+args[1]+".messageUnbreakble").replaceAll("(&([a-f0-9]))", "§$2"));
 			}
 		}
 		return true;
@@ -283,5 +281,9 @@ public class AntiGriefWorldPvp  extends JavaPlugin implements Listener
 		getConfig().set("config.worlds", str1);
 		this.saveConfig();
 		this.reloadConfig();
+	}
+	
+	public String getColorMessage(String path){
+		return getConfig().getString(path).replaceAll("(&([a-f0-9]))", "§$2");
 	}
 }

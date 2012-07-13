@@ -44,7 +44,6 @@ public class AGBlockListener implements Listener{
 							return;
 						}
 					}
-
 					player.sendMessage(Config.getMessageUnbreakble(world));
 					event.setCancelled(true);
 				}

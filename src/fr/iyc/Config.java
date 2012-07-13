@@ -82,6 +82,6 @@ public class Config
 	}
 
 	public static String getMessageUnbreakble(String world) {
-		return plugin.getConfig().getString("config."+world+".messageUnbreakble");
+		return plugin.getColorMessage("config."+world+".messageUnbreakble");
 	}
 }
