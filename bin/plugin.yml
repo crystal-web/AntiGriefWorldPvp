@@ -1,6 +1,0 @@
-name: AntiGriefWorldPvp
-main: fr.iyc.tomcraft.agpvp.AntiGriefWorldPvp
-version: 2
-commands:
-    agpvp:
-        description: Commande de l'antigrief world PVP
